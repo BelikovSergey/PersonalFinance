@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using PersonalFinance.Domain.Events;
 using PersonalFinance.Domain.Interfaces;
 using PersonalFinance.Domain.ValueObjects;
 
@@ -48,6 +49,10 @@ namespace PersonalFinance.Domain.Entities
         private void AddTransaction(Transaction transaction)
         {
             _transactions.Add(transaction);
+            DomainEvents.Raise(new NewTransaction
+            {
+                Transaction = transaction
+            });
         }
 
         public void Income(DateTime date, Money money)
