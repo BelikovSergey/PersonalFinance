@@ -41,9 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Account.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Month.cs" />
+    <Compile Include="Entities\Spend.cs" />
+    <Compile Include="Entities\Transaction.cs" />
+    <Compile Include="Entities\Transfer.cs" />
     <Compile Include="enums.cs" />
+    <Compile Include="Interfaces\ICurrencyRateProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserProfile.cs" />
     <Compile Include="ValueObjects\Category.cs" />
     <Compile Include="ValueObjects\Currency.cs" />
     <Compile Include="ValueObjects\Money.cs" />
