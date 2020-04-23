@@ -1,3 +1,7 @@
+using PersonalFinance.Application;
+using PersonalFinance.Domain.Interfaces;
+using PersonalFinance.Infrastructure;
+
 namespace PersonalFinance {
     using System;
     using System.Collections.Generic;
@@ -15,6 +19,8 @@ namespace PersonalFinance {
 
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
+            container.Singleton<IApplicationService, ApplicationService>();
+            container.Singleton<ICurrencyRateProvider, CurrencyRateProvider>();
             container.PerRequest<IShell, ShellViewModel>();
         }
 

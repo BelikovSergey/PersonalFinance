@@ -8,7 +8,7 @@ namespace PersonalFinance.Domain.ValueObjects
             
         public decimal Amount { get; }
 
-        public Money(Currency currency, decimal amount)
+        public Money(decimal amount, Currency currency)
         {
             Currency = currency;
             Amount = amount;
@@ -23,7 +23,7 @@ namespace PersonalFinance.Domain.ValueObjects
 
         public Money Add(Money money, decimal rate)
         {
-            return new Money(Currency, Amount + money.Amount * rate);
+            return new Money(Amount + money.Amount * rate, Currency);
         }
     }
 }

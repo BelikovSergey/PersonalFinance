@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Application\ApplicationService.cs" />
+    <Compile Include="Application\IApplicationService.cs" />
+    <Compile Include="Converters\MoneyToStringConverter.cs" />
+    <Compile Include="Infrastructure\CurrencyRateProvider.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="App.xaml.cs">
@@ -75,15 +79,25 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\EnterMoneyViewModel.cs" />
     <Compile Include="ViewModels\HistoryItemViewModel.cs" />
-    <Compile Include="View\HistoryItemView.xaml.cs">
+    <Compile Include="ViewModels\MonthViewModel.cs" />
+    <Compile Include="ViewModels\SpentByCategoryViewModel.cs" />
+    <Compile Include="Views\EnterMoneyView.xaml.cs">
+      <DependentUpon>EnterMoneyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HistoryItemView.xaml.cs">
       <DependentUpon>HistoryItemView.xaml</DependentUpon>
     </Compile>
     <Page Include="ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\HistoryItemView.xaml">
+    <Page Include="Views\EnterMoneyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HistoryItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PersonalFinance.Domain\PersonalFinance.Domain.csproj">
+      <Project>{8c149e23-49fd-416b-99fe-2cf9763a2afa}</Project>
+      <Name>PersonalFinance.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

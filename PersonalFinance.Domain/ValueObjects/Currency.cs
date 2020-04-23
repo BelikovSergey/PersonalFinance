@@ -8,6 +8,10 @@ namespace PersonalFinance.Domain.ValueObjects
 {
     public class Currency : ValueObject
     {
+        public static readonly Currency RUB = new Currency("₽", "RUB");
+        public static readonly Currency USD = new Currency("$", "USD");
+        public static readonly Currency EUR = new Currency("€", "EUR");
+
         public string Symbol { get; }
 
         public string Name { get; }

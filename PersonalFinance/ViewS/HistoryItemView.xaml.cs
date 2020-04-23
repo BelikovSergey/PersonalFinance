@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PersonalFinance
+namespace PersonalFinance.Views
 {
     /// <summary>
     /// Interaction logic for HistoryItemView.xaml

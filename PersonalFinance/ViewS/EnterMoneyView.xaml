@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="PersonalFinance.Views.EnterMoneyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PersonalFinance.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="Sum" Grid.Column="0"/>
+        <ComboBox x:Name="Currency" Grid.Column="1"/>
+        <Button x:Name="Accept" Grid.Column="2">Ok</Button>
+        <Button x:Name="Cancel" Grid.Column="3">Cancel</Button>
+    </Grid>
+</UserControl>
