@@ -12,6 +12,8 @@ namespace PersonalFinance.ViewModels
     {
         private readonly Category _category;
 
+        public Category Model => _category;
+
         private readonly Month _month;
 
         public string Name => _category.Name;

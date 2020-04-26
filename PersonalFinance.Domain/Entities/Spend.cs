@@ -12,5 +12,10 @@ namespace PersonalFinance.Domain.Entities
         {
             Category = category;
         }
+
+        public override Money Apply(Money sourceMoney)
+        {
+            return sourceMoney.Subtract(Sum, Rate);
+        }
     }
 }

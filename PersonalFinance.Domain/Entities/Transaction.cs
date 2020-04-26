@@ -25,5 +25,10 @@ namespace PersonalFinance.Domain.Entities
             Rate = rate;
             Type = type;
         }
+
+        public virtual Money Apply(Money sourceMoney)
+        {
+            return sourceMoney.Add(Sum, Rate);
+        }
     }
 }

@@ -25,5 +25,10 @@ namespace PersonalFinance.Domain.ValueObjects
         {
             return new Money(Amount + money.Amount * rate, Currency);
         }
+
+        public Money Subtract(Money money, decimal rate)
+        {
+            return new Money(Amount - money.Amount * rate, Currency);
+        }
     }
 }

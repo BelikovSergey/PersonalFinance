@@ -4,22 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Caliburn.Micro;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.ValueObjects;
 
 namespace PersonalFinance.ViewModels
 { 
-    class AccountViewModel
+    class AccountViewModel : PropertyChangedBase
     {
-        private readonly Account _account;
+        public Account Model { get; }
 
-        public string Name => _account.Name;
+        public string Name => Model.Name;
 
-        public Money Amount => _account.Amount;
+        public Money Amount => Model.Amount;
 
-        public AccountViewModel(Account account)
+        public AccountViewModel(Account model)
         {
-            _account = account;
+            Model = model;
+        }
+
+        public void Spend(DateTime date, Money money, Category category)
+        {
+            Model.Spend(date, money, category);
+            NotifyOfPropertyChange(() => Amount);
         }
 
         public void Add()

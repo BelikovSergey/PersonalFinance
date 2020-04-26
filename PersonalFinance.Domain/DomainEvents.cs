@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,19 +10,24 @@ namespace PersonalFinance.Domain
 {
     public static class DomainEvents
     {
-        private static readonly Dictionary<Type, List<Delegate>> _handlers = new Dictionary<Type, List<Delegate>>();
+        private static readonly ConcurrentDictionary<Type, IEnumerable<Delegate>> _handlers = new ConcurrentDictionary<Type, IEnumerable<Delegate>>();
 
         public static void Register<T>(Action<T> eventHandler) where T : IDomainEvent
         {
-            _handlers[typeof(T)].Add(eventHandler);
+            _handlers.AddOrUpdate(typeof(T), 
+                (type)=> new List<Delegate> {eventHandler},
+                (type, list) => new List<Delegate>(list) {eventHandler});
         }
 
         public static void Raise<T>(T domainEvent) where T : IDomainEvent
         {
-            foreach (Delegate d in _handlers[domainEvent.GetType()])
+            if (_handlers.TryGetValue(domainEvent.GetType(), out var subscriptions))
             {
-                var action = (Action<T>) d;
-                action(domainEvent);
+                foreach (Delegate d in subscriptions)
+                {
+                    var action = (Action<T>) d;
+                    action(domainEvent);
+                }
             }
         }
     }

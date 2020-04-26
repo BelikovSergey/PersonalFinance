@@ -8,6 +8,6 @@ namespace PersonalFinance.Domain
     {
         public static Currency DefaultCurrency { get; set; } = Currency.RUB;
 
-        public static List<Category> Categories { get; } = new List<Category>();
+        public static List<Category> Categories { get; set; }
     }
 }

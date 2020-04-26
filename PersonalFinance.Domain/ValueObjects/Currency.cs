@@ -27,5 +27,9 @@ namespace PersonalFinance.Domain.ValueObjects
             yield return Name;
         }
 
+        public override string ToString()
+        {
+            return Symbol;
+        }
     }
 }

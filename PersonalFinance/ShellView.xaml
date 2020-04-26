@@ -118,7 +118,7 @@
                 <ContentControl x:Name="EnterMoney" 
                                 Margin="0,3,0,0"
                                 HorizontalAlignment="Left"
-                                Width="200"/>
+                                MinWidth="250"/>
             </StackPanel>
             <ListBox x:Name="History"
                      Grid.Row="1" 

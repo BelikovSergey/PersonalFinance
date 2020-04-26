@@ -19,7 +19,7 @@ namespace PersonalFinance.Domain.Entities
 
                 foreach (var transaction in _transactions)
                 {
-                    res = res.Add(transaction.Sum, transaction.Rate);
+                    res = transaction.Apply(res);
                 }
 
                 return res;

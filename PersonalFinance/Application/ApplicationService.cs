@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PersonalFinance.Domain;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.Interfaces;
 using PersonalFinance.Domain.ValueObjects;
@@ -13,24 +14,36 @@ namespace PersonalFinance.Application
     {
         private readonly ICurrencyRateProvider _currencyRateProvider;
 
-        private List<Category> _categories = new List<Category>()
-        {
-            new Category {Name="Продукты"},
-            new Category {Name="Кафе"},
-            new Category {Name="Развлечения"},
-            new Category {Name="Здоровье"},
-            new Category {Name="Хозяйство"},
-            new Category {Name="Развитие"},
-            new Category {Name="Транспорт"},
-            new Category {Name="Прочее"}
-        };
-
         private readonly List<Account> _accounts = new List<Account>();
 
-        public IEnumerable<Category> Categories => _categories;
+        public IEnumerable<Category> Categories => UserProfile.Categories;
+
+        public Currency DefaultCurrency => UserProfile.DefaultCurrency;
+
+        public IEnumerable<Currency> Currencies
+        {
+            get
+            {
+                yield return Currency.RUB;
+                yield return Currency.USD;
+                yield return Currency.EUR;
+            }
+        }
 
         public ApplicationService(ICurrencyRateProvider currencyRateProvider)
         {
+            UserProfile.Categories = new List<Category>()
+            {
+                new Category {Name="Продукты"},
+                new Category {Name="Кафе"},
+                new Category {Name="Развлечения"},
+                new Category {Name="Здоровье"},
+                new Category {Name="Хозяйство"},
+                new Category {Name="Развитие"},
+                new Category {Name="Транспорт"},
+                new Category {Name="Прочее"}
+            };
+
             _currencyRateProvider = currencyRateProvider;
             _accounts.AddRange(new List<Account>
             {

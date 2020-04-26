@@ -1,6 +1,7 @@
 using PersonalFinance.Application;
 using PersonalFinance.Domain.Interfaces;
 using PersonalFinance.Infrastructure;
+using PersonalFinance.ViewModels;
 
 namespace PersonalFinance {
     using System;
@@ -16,6 +17,8 @@ namespace PersonalFinance {
 
         protected override void Configure() {
             container = new SimpleContainer();
+
+            container.PerRequest<EnterMoneyViewModel, EnterMoneyViewModel>();
 
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();

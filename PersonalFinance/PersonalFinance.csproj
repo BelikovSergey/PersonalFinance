@@ -71,6 +71,7 @@
     <Compile Include="Application\ApplicationService.cs" />
     <Compile Include="Application\IApplicationService.cs" />
     <Compile Include="Converters\MoneyToStringConverter.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Infrastructure\CurrencyRateProvider.cs" />
     <Compile Include="IShell.cs" />
     <Compile Include="ShellViewModel.cs" />

@@ -13,8 +13,8 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="Sum" Grid.Column="0"/>
-        <ComboBox x:Name="Currency" Grid.Column="1"/>
+        <TextBox x:Name="Amount" Grid.Column="0"/>
+        <ComboBox x:Name="Currencies" DisplayMemberPath="Symbol" Grid.Column="1"/>
         <Button x:Name="Accept" Grid.Column="2">Ok</Button>
         <Button x:Name="Cancel" Grid.Column="3">Cancel</Button>
     </Grid>
