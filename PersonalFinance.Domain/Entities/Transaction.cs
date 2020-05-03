@@ -17,6 +17,10 @@ namespace PersonalFinance.Domain.Entities
 
         public TransactionType Type { get; }
 
+        protected Transaction()
+        {
+        }
+
         public Transaction(Guid id, DateTime date, Money sum, decimal rate, TransactionType type)
         {
             Id = id;

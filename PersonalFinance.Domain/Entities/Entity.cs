@@ -6,6 +6,11 @@ namespace PersonalFinance.Domain.Entities
     {
         public virtual Guid Id { get; protected set; }
 
+        protected Entity()
+        {
+            Id = Guid.NewGuid();
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as Entity;

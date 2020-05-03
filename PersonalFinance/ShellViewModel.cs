@@ -4,9 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Caliburn.Micro;
 using PersonalFinance.Application;
+using PersonalFinance.Database;
 using PersonalFinance.Domain;
 using PersonalFinance.Domain.Entities;
 using PersonalFinance.Domain.Events;
+using PersonalFinance.Domain.ValueObjects;
 using PersonalFinance.ViewModels;
 
 namespace PersonalFinance {
@@ -91,6 +93,12 @@ namespace PersonalFinance {
 
             EnterMoney = enterMoneyViewModel;
             EnterMoney.MoneyEnteredEvent += EnterMoney_MoneyEnteredEvent;
+
+            using (var dataContext = new PersonalFinanceDbContext())
+            {
+                dataContext.Categories.Add(new Category { Name = "Продукты", Created = DateTime.UtcNow });
+                dataContext.SaveChanges();
+            }
         }
 
         private void EnterMoney_MoneyEnteredEvent(Domain.ValueObjects.Money moneyEntered)

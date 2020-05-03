@@ -38,6 +38,10 @@ namespace PersonalFinance.Domain.Entities
         public IDictionary<Category, Money> SpentByCategories => Categories.ToDictionary(x => x,
             GetSpentByCategory);
 
+        protected Month()
+        {
+        }
+
         public Month(DateTime firstDay, IEnumerable<Category> categories, IEnumerable<Account> accounts, ICurrencyRateProvider currencyRateProvider)
         {
             FirstDay = firstDay;

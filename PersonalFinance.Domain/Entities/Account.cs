@@ -36,6 +36,10 @@ namespace PersonalFinance.Domain.Entities
 
         private readonly ICurrencyRateProvider _currencyRateProvider;
 
+        protected Account()
+        {
+        }
+
         public Account(Guid id, string name, Money startAmount, IEnumerable<Transaction> transactions,
             ICurrencyRateProvider currencyRateProvider)
         {
